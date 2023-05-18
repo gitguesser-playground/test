@@ -26,6 +26,7 @@ jobs:
           python-version: '3.11'
           cache: 'pip' 
       - uses: actions/setup-node@v3
+        working-directory: ./frontend
         with:
           node-version: 18
           cache: 'npm'
@@ -33,10 +34,13 @@ jobs:
         run: |
           pip install autoflake isort black
           npm install prettier eslint eslint-config-react-app
-      - name: Check code style
+      - name: Check backend code style
         run: |
           autoflake --remove-all-unused-imports --recursive --remove-unused-variables --check backend
           isort backend --profile black --check-only
           black backend --check
-          npx prettier --check frontend
-          npx eslint frontend
+      - name: Check frontend code style
+        working-directory: ./frontend
+        run: |
+          npx prettier --check .
+          npx eslint .
