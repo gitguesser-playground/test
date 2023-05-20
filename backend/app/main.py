@@ -11,9 +11,6 @@ app.include_router(game.router)
 @app.on_event("startup")
 async def on_startup():
 
-
-
-    
     await init_models()
 
 
