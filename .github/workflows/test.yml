@@ -1,6 +1,5 @@
 name: Testing and Style Check
-ci:
-    autofix_prs: false
+
 on:
   push:
     branches:
