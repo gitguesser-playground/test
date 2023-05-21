@@ -1,5 +1,6 @@
 name: Testing and Style Check
-
+ci:
+    autofix_prs: false
 on:
   push:
     branches:
@@ -16,10 +17,3 @@ jobs:
         run: docker-compose -f compose.yaml exec --tty backend pytest
       - name: Stop containers
         run: docker-compose -f compose.yaml down
-
-  style-check:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
-    - uses: pre-commit/action@v3.0.0
