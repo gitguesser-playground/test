@@ -1,7 +1,5 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
-ci:
-    autofix_prs: false
 repos:
 -   repo: https://github.com/psf/black
     rev: 23.3.0
