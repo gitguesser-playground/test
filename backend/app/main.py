@@ -10,12 +10,15 @@ app.include_router(game.router)
 
 @app.on_event("startup")
 async def on_startup():
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+>>>>>>> 89ffce0fe03c4f064d2e8d6e2c97650e6c25eb4c
     await init_models()
 
 
