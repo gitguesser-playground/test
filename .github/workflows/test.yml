@@ -20,24 +20,6 @@ jobs:
   style-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-          cache: 'pip' 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'npm'
-          cache-dependency-path: ./frontend/package-lock.json
-      - name: Install dependencies
-        run: |
-          pip install autoflake isort black
-          npm install prettier eslint eslint-config-react-app
-      - name: Check code style
-        run: |
-          autoflake --remove-all-unused-imports --recursive --remove-unused-variables --check backend
-          isort backend --profile black --check-only
-          black backend --check
-          npx prettier --check frontend
-          npx eslint frontend
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+    - uses: pre-commit/action@v3.0.0
